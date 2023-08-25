@@ -1,9 +1,9 @@
-# Source                  : 4D Langeivn model
+# Source                  : 4D Langevin model
 # Author                  : C. Ishizuka at al.
 # Institute               : Tokyo Institute of Technology
 # Reference               : Phys.Rev.C.96.064616 (2017)
 # doi                     : http://dx.doi.org/10.1103/PhysRevC.96.064616
-# Description             : Y(A, TKE, dTKE) distribution by Gaussian fitting
+# Description             : Y(A, TKE, dTKE) by Gaussian fitting.
 # License                 : CC BY-SA-4.0
 # Compound                : 102-No-244
 # Excitation Energy (MeV) : 10.0 MeV
