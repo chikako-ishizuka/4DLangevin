@@ -1,6 +1,6 @@
 # 4D Langevin Fission Fragment Dataset
 
-Physical processes in nuclear fission are of research interest due to the complexity of the large amplitude collective motion in the compound nucleus. We have developed a four-dimensional (4D) Langevin model with the potential energy calculated using the deformed two-center Woods-Saxon (TCWS) potential and the Nilsson-type potential, including microscopic energy corrections following the Strutinsky method and BCS pairing [C. Ishizuka et al. Phys. Rev. C 96 (2017)](http://dx.doi.org/10.1080/00223131.2018.1467288). This repository contains datasets of yields and total kinetic energy (TKE) of fission fragment pairs from even-even compound nuclei from U up to Z=120 at 10 MeV excitation energy, calculated using the 4D Langevin model. We hope that this dataset can provide opportunities for researchers to benchmark fission fragment decay simulations, train machine learning models, or develop correlations to gain new insights into the physical processes in nuclear fission.
+Physical processes in nuclear fission are of research interest due to the complexity of the large amplitude collective motion in the compound nucleus. We have developed a four-dimensional (4D) Langevin model with the potential energy calculated using the deformed two-center Woods-Saxon (TCWS) potential and the Nilsson-type potential, including microscopic energy corrections following the Strutinsky method and BCS pairing (See details in [C. Ishizuka et al. Phys. Rev. C 96 (2017)](http://dx.doi.org/10.1080/00223131.2018.1467288)). This repository contains datasets of yields and total kinetic energy (TKE) of fission fragment pairs from even-even compound nuclei from U up to Z=120 at 10 MeV excitation energy, calculated using the 4D Langevin model. We hope that this dataset can provide opportunities for researchers to benchmark fission fragment decay simulations, train machine learning models, or develop correlations to gain new insights into the physical processes in nuclear fission.
 
 ## About Dataset
 
@@ -8,9 +8,7 @@ The fission event data from the 4D Langevin model is followed by data processing
 
 ### Description of the data
 
-Here you can descibe how the data is organized in this whole dataset. How the data is stored in all the files. You also have to brief about the naming convention of the files in different directories. 
-
-Dataset names follow the convention: 
+Dataset names follow the naming convention: 
 
 * `CompoundNuclideElementMass_ExcitationEnergy_TKE.dat` - Y(A, TKE, dTKE) data by Gaussian fitting of TKE distribution at each fission fragment mass
 * `CompoundNuclideElementMass_ExcitationEnergy_fullTKE.dat` - full A(Y, TKE) data purely from 4d Langevin model. TKE is binned in 1 MeV energy bin.
@@ -76,6 +74,7 @@ Both data files only contain data on heavy fragment masses, as shown in the foll
   139      2.12000E+02      1.40213E-04
   139      2.13000E+02      4.67377E-05
   139      2.14000E+02      0.00000E+00
+   :
 ```
 
 ## Download
@@ -156,7 +155,8 @@ plt.show()
 ## Authors
 
 * **Chikako Ishizuka, Mark D. Usang, Fedir A. Ivanyuk, Joachim A. Maruhn, Katsuhisa Nishio, and Satoshi Chiba** - *Initial work* - [Phys. Rev. C 96 (2017)](http://dx.doi.org/10.1080/00223131.2018.1467288.) 
-
+* **Kazuki Fujio** - *Fine tune for U and Pu isotopes* [JNST???](doi)
+* **Shin Okumura** - *Data processing for TALYS input*
 
 ## License and Disclaimer
 
