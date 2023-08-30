@@ -1,6 +1,6 @@
 # 4D Langevin Fission Fragment Dataset
 
-Physical processes in nuclear fission are of research interest due to the complexity of the large amplitude collective motion in the compound nucleus. We have developed a four-dimensional (4D) Langevin model with the potential energy calculated using the deformed two-center Woods-Saxon (TCWS) potential and the Nilsson-type potential, including microscopic energy corrections following the Strutinsky method and BCS pairing (See details in [C. Ishizuka et al. Phys. Rev. C 96 (2017)](http://dx.doi.org/10.1080/00223131.2018.1467288)). This repository contains datasets of yields and total kinetic energy (TKE) of fission fragment pairs from even-even compound nuclei from U up to Z=120 at 10 MeV excitation energy, calculated using the 4D Langevin model. We hope that this dataset can provide opportunities for researchers to benchmark fission fragment decay simulations, train machine learning models, or develop correlations to gain new insights into the physical processes in nuclear fission.
+Physical processes in nuclear fission are of research interest due to the complexity of the large amplitude collective motion in the compound nucleus. We have developed a four-dimensional (4D) Langevin model with the potential energy calculated using the deformed two-center Woods-Saxon (TCWS) potential and the Nilsson-type potential, including microscopic energy corrections following the Strutinsky method and BCS pairing (See details in [C. Ishizuka et al. Phys. Rev. C 96 (2017)](http://dx.doi.org/10.1080/00223131.2018.1467288)) to investigate fission fragments' characteristics. This repository contains datasets of yields and total kinetic energy (TKE) of fission fragment pairs from even-even compound nuclei from U up to Z=120 at 10 MeV excitation energy, calculated using the 4D Langevin model. We hope that this dataset can provide opportunities for researchers to benchmark fission fragment decay simulations, train machine learning models, or develop correlations to gain new insights into the physical processes in nuclear fission.
 
 ## About Dataset
 
@@ -8,11 +8,13 @@ The fission event data from the 4D Langevin model is followed by data processing
 
 ### Description of the data
 
-Dataset names follow the naming convention: 
+Dataset names follow the naming convention, where `Element` and `Mass` are the element and mass number of the compound nucleus: 
 
-* `CompoundNuclideElementMass_ExcitationEnergy_TKE.dat` - Y(A, TKE, dTKE) data by Gaussian fitting of TKE distribution at each fission fragment mass
-* `CompoundNuclideElementMass_ExcitationEnergy_fullTKE.dat` - full A(Y, TKE) data purely from 4d Langevin model. TKE is binned in 1 MeV energy bin.
-
+* `files/Element/ElementMass_ExcitationEnergy_TKE.dat` - Y(A, TKE, dTKE) data by Gaussian fitting of TKE distribution at each fission fragment mass
+* `files/Element/ElementMass_ExcitationEnergy_fullTKE.dat` - full A(Y, TKE) data purely from 4d Langevin model. TKE is binned in 1 MeV energy bin.
+* `plots/Element/ElementMass_E10.0MeV_ya.png` - Data plot of Y(A) distribution
+* `plots/Element/ElementMass_E10.0MeV_a_tke.png` - Data plot of TKE(Y) distribution for each mass while Gaussian fitting
+* `plots/Element/ElementMass_E10.0MeV_tke.png` - Data plot of TKE(A) distribution
 
 ```
 4DLangevin
@@ -33,20 +35,23 @@ Dataset names follow the naming convention:
       └── ...
 ```
 
-* Please note that files with charge and fragment excitation energies, i.e. Y(Z, A, TKE, TXE, Eex_h, dEex_h, , Eex_l, dEex_l), will be available in the nuclear reaction code TALYS package.
+* Please note that files with charge and fragment excitation energies, i.e. `Y(Z, A, TKE, TXE, Eex_h, dEex_h, , Eex_l, dEex_l)`, will be available in the nuclear reaction code TALYS package.
 
 
 ### File formats
-Both data files only contain data on heavy fragment masses, as shown in the following examples.
+Both data files only contain heavy fragment data, as shown in the following examples, knowing that the mass distribution of fission fragments exhibits mirror symmetry around the half-mass of the compound nucleus. 
 
-`CompoundNuclideElementMass_ExcitationEnergy_TKE.dat` 
+`files/Element/ElementMass_ExcitationEnergy_TKE.dat` 
 ```
 #  A       Yield            Mean TKE         dTKE
-  138      6.71848E-02      2.68184E+02      1.49124E+01
-  139      7.56412E-02      2.66829E+02      1.66315E+01
+  138      6.72057E-02      2.68184E+02      1.49124E+01
+  139      7.56648E-02      2.66829E+02      1.66315E+01
+  140      7.14119E-02      2.66924E+02      1.62956E+01
+  141      7.91700E-02      2.67436E+02      1.57884E+01
+  142      6.88414E-02      2.66477E+02      1.58394E+01
 ```
 
-`CompoundNuclideElementMass_ExcitationEnergy_fullTKE.dat`
+`files/Element/ElementMass_ExcitationEnergy_fullTKE.dat`
 ```
 #  A       TKE[MeV]          Yield
   138      2.03000E+02      0.00000E+00
@@ -77,6 +82,7 @@ Both data files only contain data on heavy fragment masses, as shown in the foll
    :
 ```
 
+
 ## Download
 You can download the repository from the terminal using the following command:
 ```
@@ -98,7 +104,7 @@ df = pd.read_csv(
                     delim_whitespace=True
                    )
 
-# Generate light fragments mass distribution
+# Generate the light fragment mass distribution
 a_cn = df["A"].min() * 2
 lis = [[a_cn - rows[0], rows[1], rows[2], rows[3]] for _, rows in df.iterrows()]
 df = pd.concat([df, pd.DataFrame(lis, columns = ["A", "Yield", "TKE", "dTKE"])], ignore_index=True)
@@ -148,8 +154,8 @@ plt.show()
 
 ## Online links
 
-* [Tokyo Tech](http://www.zc.iir.titech.ac.jp/~chiba/) - Link to Chiba lab in Tokyo Institute of Technology.
-* [4DLangevin](https://github.com/chikako-ishizuka/4DLangevin) - Link to the data repository.
+* [4DLangevin](https://github.com/chikako-ishizuka/4DLangevin) - Link to this data repository.
+* [Tokyo Tech](http://www.zc.iir.titech.ac.jp/~chiba/) - Link to Chiba lab. in Tokyo Institute of Technology.
 
 
 ## Authors
@@ -163,9 +169,8 @@ plt.show()
 This project is licensed under the CC BY-SA License - see the [LICENSE.md](LICENSE.md) file for details
 
 * Data Citation: Data sources should be acknowledged by a citation. 
-    ```
-    C. Ishizuka et al., "Four-dimensional Langevin approach to low-energy nuclear fission of 236U.", Phys. Rev. C 96 (2017), 064616.
-    ```
+    > C. Ishizuka et al., "Four-dimensional Langevin approach to low-energy nuclear fission of 236U.",
+    > Phys. Rev. C 96 (2017), 064616.
 * Changes: The developers of this repository reserve the right to modify or update datasets at any time without prior notice.
 * Reporting Issues: If you find any issues of dataset, please contact C. Ishizuka.
 
