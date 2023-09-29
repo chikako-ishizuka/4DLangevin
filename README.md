@@ -161,7 +161,7 @@ plt.show()
 ## Authors
 
 * **Chikako Ishizuka, Mark D. Usang, Fedir A. Ivanyuk, Joachim A. Maruhn, Katsuhisa Nishio, and Satoshi Chiba** - *Initial work* - [Phys. Rev. C 96 (2017)](http://dx.doi.org/10.1080/00223131.2018.1467288.) 
-* **Kazuki Fujio** - *Fine tune for U and Pu isotopes* [JNST???](doi)
+* **Kazuki Fujio** - *Fine tune for U and Pu isotopes (Under review in Journal of Nuclear Science and Technology)* [arXiv:2309.12653](https://doi.org/10.48550/arXiv.2309.12653)
 * **Shin Okumura** - *Data processing for TALYS input*
 
 ## License and Disclaimer
